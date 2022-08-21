@@ -12,6 +12,7 @@ function chunk(arr, chunk){
     return newArr;
 }
 
-let nums = [0,1,2,3,4,5];
-
-console.log(chunk(nums, 2));
+function compact(arr) {
+    arr = arr.filter(value => value != false);
+    return arr;
+}
