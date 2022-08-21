@@ -17,7 +17,7 @@ function compact(arr) {
     newArr = newArr.filter(value => value != false);
     return newArr;
 }
-/* new */
+
 function concat(arr, ...values){
     let newArr = [...arr];
     values.forEach(elem => { newArr.push(elem); });
@@ -48,9 +48,70 @@ function dropRightWhile(arr, predicate){
     return newArr;
 }
 
-var users = [
-    { 'user': 'barney',  'active': true },
-    { 'user': 'fred',    'active': false },
-    { 'user': 'pebbles', 'active': false }
-  ];
- console.log(dropRightWhile(users, function(o) { return !o.active; }));  
+function fill(arr, value, start, end){
+    let newArr = [...arr];
+    for(let  i = start; i < end - 1; i++){
+        newArr[i] = value;
+    }
+    return newArr;
+}
+
+function head(arr){
+    return arr[0];
+}
+
+function fromPairs(arr){
+    let newArr = [...arr];
+    let newObj = {};
+    newArr.forEach((elem) => {
+        newObj[elem[0].toString()] = elem[1];
+    })
+    return newObj;
+} 
+
+function indexOf(arr, value, fromIndex = 0) {
+    let newArr = [...arr];
+    for(let i = fromIndex; i < newArr.length; i++){
+        if(newArr[i] == value){
+            return i;
+        }
+    }
+}
+
+function initial(arr){
+    let newArr = [...arr];
+    newArr.pop();
+    return newArr;
+}
+
+function intersection(arr, secArr){
+    let newArr = [...arr];
+    let newSecArr = [...secArr];
+    let result = [];
+    for(let i = 0; i < newSecArr.length; i++){
+        for(let j = 0; j < newArr.length; j++){
+            if(newArr[j] == newSecArr[i]){
+                result.push(newArr[j]);
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+function intersectionBy(arr, secArr, func = (arg) => arg){
+    let newArr = [...arr];
+    let newSecArr = [...secArr];
+    let result = [];
+    for(let i = 0; i < newSecArr.length; i++){
+        for(let j = 0; j < newArr.length; j++){
+            if(func(newArr[j]) == func(newSecArr[i])){
+                result.push(newArr[j]);
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+console.log(intersectionBy([2.1, 1.2], [2.1, 3.4]));
