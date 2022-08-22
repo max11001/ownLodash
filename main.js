@@ -114,4 +114,22 @@ function intersectionBy(arr, secArr, func = (arg) => arg){
     return result;
 }
 
-console.log(intersectionBy([2.1, 1.2], [2.1, 3.4]));
+function join(arr, sep){
+    let newArr = [...arr];
+    return newArr.join(sep);
+}
+
+function last(arr){
+    let newArr = [...arr];
+    return newArr[newArr.length - 1];
+}
+
+function lastIndexOf(arr, item){
+    let newItem;
+    arr.forEach((elem, index) => {
+        if(elem == item) 
+            newItem = index;
+    })
+    return newItem;
+}
+
